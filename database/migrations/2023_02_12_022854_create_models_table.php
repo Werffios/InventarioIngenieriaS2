@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('models', function (Blueprint $table) {
             $table->id();
+            $table->string('name').notNullValue();
+            $table->unsignedBigInteger('id_brand').nullable();
+            $table->foreign('id_brand')->references('id')->on('brands');
             $table->timestamps();
         });
     }

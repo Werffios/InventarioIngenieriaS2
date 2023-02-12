@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('responsibles', function (Blueprint $table) {
             $table->id();
+            $table->string('id_asset').notNullValue();
+            $table->string('id_person').notNullValue();
+            $table->dateTime('start_date').notNullValue();
+            $table->foreign('id_asset')->references('id')->on('assets');
+            $table->foreign('id_person')->references('id')->on('people');
             $table->timestamps();
         });
     }
